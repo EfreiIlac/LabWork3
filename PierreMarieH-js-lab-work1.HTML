@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LabWork3</title>
+  </head>
+  <body>
+    <script>
+      // Asking for the num of iterations
+      let n = prompt("How many course did you finish ?", "0");
+      // If the name is empty, a string or null, the program will stop
+      if (isNaN(n)) {
+        document.write("<h2>Invalid input</h2>");
+      } else {
+        // If the name is valid, the program will continue
+        // Convert the entry to a number
+        n = parseInt(n);
+        // Create an array to store the grades
+        let grades = [];
+        // Asking n times a grade and push it in the grades array
+        while (grades.length < n) {
+          grades.push(
+            parseInt(
+              prompt(`Enter your mark for course ${grades.length + 1}`, "0")
+            )
+          );
+        }
+        // For each grade in the grades array, we will write it
+        grades.forEach((grade) => {
+          document.write(`<p>${grade}</p>`);
+        });
+      }
+    </script>
+  </body>
+</html>
+
