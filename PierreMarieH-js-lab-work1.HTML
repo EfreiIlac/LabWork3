@@ -9,28 +9,52 @@
   <body>
     <script>
       // Asking for the num of iterations
-      let n = prompt("How many course did you finish ?", "0");
+      let numOfCourses = prompt("How many course did you finish ?", "0")
       // If the name is empty, a string or null, the program will stop
-      if (isNaN(n)) {
-        document.write("<h2>Invalid input</h2>");
+      if (isNaN(numOfCourses)) {
+        document.write("<h2>Invalid input</h2>")
       } else {
         // If the name is valid, the program will continue
         // Convert the entry to a number
-        n = parseInt(n);
+        numOfCourses = parseInt(numOfCourses)
         // Create an array to store the grades
-        let grades = [];
+        let courseMarks = []
         // Asking n times a grade and push it in the grades array
-        while (grades.length < n) {
-          grades.push(
+        while (courseMarks.length < numOfCourses) {
+          courseMarks.push(
             parseInt(
-              prompt(`Enter your mark for course ${grades.length + 1}`, "0")
+              prompt(`Enter your mark for course ${courseMarks.length + 1}`, "0")
             )
           );
         }
         // For each grade in the grades array, we will write it
-        grades.forEach((grade) => {
-          document.write(`<p>${grade}</p>`);
-        });
+        courseMarks.forEach((mark) => {
+          document.write(`<p>${mark}</p>`)
+        })
+        // Calculate the average
+        // First calculate the sum of all the grades
+        let sum = courseMarks.reduce((a, b) => a + b, 0)
+        // Then calculate the average
+        let average = sum / courseMarks.length
+
+        // Round the average to 2 decimals
+        average = Math.round(average * 100) / 100
+        
+        // Put some letters to grade the student
+        if(average >= 90 && average <= 100) {
+          document.write(`<p>Your final average is ${average}. Your grade is A+</p>`)
+        } else if(average >= 80) {
+          document.write(`<p>Your final average is ${average}. Your grade is B</p>`)
+        } else if(average >= 70) {
+          document.write(`<p>Your final average is ${average}. Your grade is C</p>`)
+        } else if(average >= 60) {
+          document.write(`<p>Your final average is ${average}. Your grade is D</p>`)
+        } else if(average >= 0) {
+          document.write(`<p>Your final average is ${average}. Your grade is F</p>`)
+        } else {
+          document.write('Sorry, All the marks have to be from minimum 0 to maximum 100!')
+        }
+
       }
     </script>
   </body>
